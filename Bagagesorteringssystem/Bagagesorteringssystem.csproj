@@ -45,6 +45,7 @@
     <Compile Include="AirportManager.cs" />
     <Compile Include="Bag.cs" />
     <Compile Include="Desk.cs" />
+    <Compile Include="IInsertIntoFreeSpace.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sorter.cs" />
