@@ -10,12 +10,26 @@ namespace Bagagesorteringssystem
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            Desk desk = new Desk();
+            Bag bag = new Bag();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            Terminal t1 = new Terminal();
+            t1.FlyDesination = Destination.Russia;
+            t1.TerminalID = (uint)AirportManager.avaibleTerminals.Count;
+
+            AirportManager.AddTerminal(t1);
+
+            Terminal t2 = new Terminal();
+            t2.FlyDesination = Destination.Japan;
+            t2.TerminalID = (uint)AirportManager.avaibleTerminals.Count;
+
+            AirportManager.AddTerminal(t2);
+
+
+            desk.InsertIntoSorter(bag);
+
+
+            Console.ReadKey();
         }
     }
 }
