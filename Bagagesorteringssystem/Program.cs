@@ -60,7 +60,7 @@ namespace Bagagesorteringssystem
                     if (Sorter.getInstance().GetAvaibleSpaceInBuffer() != 0)
                         desk.InsertIntoSorter(bagFactory.CreateBag());
                     
-                    Thread.Sleep(150);
+                    Thread.Sleep(15);
                 }
             }
         }

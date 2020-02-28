@@ -81,7 +81,7 @@ namespace Bagagesorteringssystem
 
                     planeTakenOff?.Invoke("Plane to " + plane.PlaneDestination + 
                                          " Deperated from Terminal " + TerminalID +
-                                         " with " + amountOfBagsInPlane + " bags \n", new EventArgs());
+                                         " with " + amountOfBagsInPlane + " bags", new EventArgs());
 
                     plane = new Plane();
                     FlyDestination = plane.PlaneDestination;
