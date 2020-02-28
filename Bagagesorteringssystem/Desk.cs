@@ -10,10 +10,7 @@ namespace Bagagesorteringssystem
     {
         public void InsertIntoSorter(Bag bag)
         {
-            // Set bag desination
-            // get info of destination from terminal
-
-
+            bag.BagID = (uint)Guid.NewGuid().GetHashCode();
 
             Sorter.getInstance().InsertInFreeSpace(bag);
         }

@@ -16,5 +16,20 @@ namespace Bagagesorteringssystem
             set { bagDestination = value; }
         }
 
+
+        private uint bagID;
+
+        public uint BagID
+        {
+            get { return bagID; }
+            set { bagID = value; }
+        }
+
+
+        public Bag(Destination destination)
+        {
+            this.BagDestination = destination;
+        }
+
     }
 }

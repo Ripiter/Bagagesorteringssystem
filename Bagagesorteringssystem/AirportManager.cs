@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Bagagesorteringssystem
 {
@@ -6,6 +7,16 @@ namespace Bagagesorteringssystem
     {
         private static AirportManager instance;
         static readonly object _lock = new object();
+
+        private WaitingArea waitingArea = new WaitingArea();
+        
+        public WaitingArea WaitingArea
+        {
+            get { return waitingArea; }
+            set { waitingArea = value; }
+        }
+
+
 
         private AirportManager()
         {
@@ -24,7 +35,7 @@ namespace Bagagesorteringssystem
         }
 
 
-        // Maybe array of terminals?
+        
         public Terminal[] terminals = new Terminal[3];
 
 
@@ -40,7 +51,7 @@ namespace Bagagesorteringssystem
 
         public void ChangeDestination(Destination destination, uint onID)
         {
-            // change destination on id
+            // change destination by id
         }
 
         public void AddTerminal(Terminal terminal)
@@ -73,13 +84,24 @@ namespace Bagagesorteringssystem
             {
                 if (terminals[i] != null)
                 {
-                    if (terminals[i].FlyDesination == destination)
+                    if (terminals[i].FlyDestination == destination)
                         temp = terminals[i];
                 }
             }
             return temp;
         }
+        public Terminal[] GetAvaibleTerminals()
+        {
+            List<Terminal> temp = new List<Terminal>();
 
+            for (int i = 0; i < terminals.Length; i++)
+            {
+                if (terminals[i] != null)
+                    temp.Add(terminals[i]);
+            }
+
+            return temp.ToArray();
+        }
 
 
         //public static void GenerateTerminals()
