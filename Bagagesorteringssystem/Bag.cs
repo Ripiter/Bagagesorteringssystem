@@ -8,12 +8,12 @@ namespace Bagagesorteringssystem
 {
     class Bag
     {
-        private Destination bagDestination;
+        private Destination bagTagDestination;
 
-        public Destination BagDestination
+        public Destination BagTagDestination
         {
-            get { return bagDestination; }
-            set { bagDestination = value; }
+            get { return bagTagDestination; }
+            set { bagTagDestination = value; }
         }
 
 
@@ -28,7 +28,7 @@ namespace Bagagesorteringssystem
 
         public Bag(Destination destination)
         {
-            this.BagDestination = destination;
+            this.BagTagDestination = destination;
         }
 
     }

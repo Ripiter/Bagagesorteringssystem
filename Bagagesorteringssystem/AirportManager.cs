@@ -62,6 +62,8 @@ namespace Bagagesorteringssystem
         {
             uint pos = InsertInFreeSpace(terminal);
             terminal.TerminalID = pos;
+
+            terminal.Open();
         }
 
         

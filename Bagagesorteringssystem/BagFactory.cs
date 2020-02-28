@@ -24,7 +24,7 @@ namespace Bagagesorteringssystem
         }
 
         /// <summary>
-        /// Creates and returns bag with destination parameter
+        /// Creates and returns bag with <paramref name="destination"/> parameter
         /// </summary>
         /// <param name="destination"></param>
         /// <returns></returns>

@@ -129,7 +129,7 @@ namespace Bagagesorteringssystem
 
             // Check if there is terminal that have the same destination as the bag
             if (buffer[j] != null)
-                terminal = AirportManager.getInstance().GetTerminalFromDestination(buffer[j].BagDestination);
+                terminal = AirportManager.getInstance().GetTerminalFromDestination(buffer[j].BagTagDestination);
             
             // If there is termianl that have the same destination as the bag
             // Send the bag there
@@ -160,7 +160,7 @@ namespace Bagagesorteringssystem
 
             // Check if there is terminal that have the same destination as the bag
             if (waiting[k] != null)
-                terminal = AirportManager.getInstance().GetTerminalFromDestination(waiting[k].BagDestination);
+                terminal = AirportManager.getInstance().GetTerminalFromDestination(waiting[k].BagTagDestination);
 
             // If there is termianl that have the same destination as the bag
             // Send the bag there

@@ -62,6 +62,11 @@ namespace Bagagesorteringssystem
 
         public Terminal()
         {
+            
+        }
+
+        public void Open()
+        {
             plane = new Plane();
             FlyDestination = plane.PlaneDestination;
 
