@@ -24,7 +24,6 @@ namespace Bagagesorteringssystem
             Console.WriteLine("Termial " + t2.TerminalID + " starts with destination " + t2.FlyDestination);
             Console.WriteLine("Termial " + t3.TerminalID + " starts with destination " + t3.FlyDestination);
 
-
             Terminal[] temp = AirportManager.getInstance().GetAvaibleTerminals();
 
             for (int i = 0; i < temp.Length; i++)
@@ -33,8 +32,7 @@ namespace Bagagesorteringssystem
                 temp[i].planeTakenOff += PrintMessage;
                 temp[i].notEnoughSpaceOnThePlane += PrintMessage;
             }
-
-
+            
             Thread deskThread = new Thread(AddBagsToDesk);
             Thread sortThread = new Thread(Sorter.getInstance().Sort);
 

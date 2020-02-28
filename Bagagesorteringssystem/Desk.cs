@@ -8,6 +8,10 @@ namespace Bagagesorteringssystem
 {
     class Desk
     {
+        /// <summary>
+        /// Inserts bag into sorter and gives the bad unique bagId
+        /// </summary>
+        /// <param name="bag"></param>
         public void InsertIntoSorter(Bag bag)
         {
             bag.BagID = (uint)Guid.NewGuid().GetHashCode();

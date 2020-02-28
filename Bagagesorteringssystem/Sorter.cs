@@ -51,30 +51,22 @@ namespace Bagagesorteringssystem
             }
         }
 
-        void RemoveAllBagsOfType(Destination destination)
-        {
-            for (int i = 0; i < buffer.Length; i++)
-            {
-                if (buffer[i].BagDestination == destination)
-                    buffer[i] = null;
-            }
-        }
-
         public int GetAvaibleSpaceInBuffer()
         {
             int temp = 0;
+
             for (int i = 0; i < buffer.Length; i++)
             {
                 if (buffer[i] == null)
                     temp++;
             }
-
             return temp;
         }
 
         int GetSpaceTakenInBuffer()
         {
             int temp = 0;
+
             for (int i = 0; i < buffer.Length; i++)
             {
                 if (buffer[i] != null)
@@ -85,7 +77,10 @@ namespace Bagagesorteringssystem
         }
 
 
-
+        /// <summary>
+        /// Returns bag array inside buffer and all bags in waiting area
+        /// </summary>
+        /// <returns></returns>
         public Bag[] GetAvaibleBags()
         {
             List<Bag> temp = new List<Bag>(AirportManager.getInstance().WaitingArea.WaitingAreaBags);
@@ -130,19 +125,22 @@ namespace Bagagesorteringssystem
         
         void SortBuffer(int j)
         {
-            Terminal des = null;
+            Terminal terminal = null;
 
+            // Check if there is terminal that have the same destination as the bag
             if (buffer[j] != null)
-                des = AirportManager.getInstance().GetTerminalFromDestination(buffer[j].BagDestination);
+                terminal = AirportManager.getInstance().GetTerminalFromDestination(buffer[j].BagDestination);
             
-
-            if (des != null)
+            // If there is termianl that have the same destination as the bag
+            // Send the bag there
+            if (terminal != null)
             {
-                des.LoadOnPlane(buffer[j]);
+                terminal.LoadOnPlane(buffer[j]);
                 buffer[j] = null;
             }
             else
             {
+                // Check if the bag is already in the waiting area
                 if (!AirportManager.getInstance().WaitingArea.WaitingAreaBags.Contains(buffer[j]))
                 {
                     AirportManager.getInstance().WaitingArea.WaitingAreaBags.Add(buffer[j]);
@@ -160,9 +158,12 @@ namespace Bagagesorteringssystem
 
             List<Bag> waiting = AirportManager.getInstance().WaitingArea.WaitingAreaBags;
 
+            // Check if there is terminal that have the same destination as the bag
             if (waiting[k] != null)
                 terminal = AirportManager.getInstance().GetTerminalFromDestination(waiting[k].BagDestination);
 
+            // If there is termianl that have the same destination as the bag
+            // Send the bag there
             if (terminal != null)
             {
                 terminal.LoadOnPlane(waiting[k]);
@@ -170,10 +171,10 @@ namespace Bagagesorteringssystem
             }
             else
             {
+                // Check if the bag is already in the waiting area
                 if (!AirportManager.getInstance().WaitingArea.WaitingAreaBags.Contains(waiting[k]))
                 {
                     AirportManager.getInstance().WaitingArea.WaitingAreaBags.Add(waiting[k]);
-                    waiting.Remove(waiting[k]);
 
                     Monitor.PulseAll(_lock);
                 }

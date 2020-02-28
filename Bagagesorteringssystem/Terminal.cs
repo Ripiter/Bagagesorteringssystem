@@ -65,7 +65,7 @@ namespace Bagagesorteringssystem
             plane = new Plane();
             FlyDestination = plane.PlaneDestination;
 
-            // Start Thread to refresh plane
+            // Create and start the thread that simulate the plane comming and going
             Thread terminalThread = new Thread(GetANewPlane);
             terminalThread.Start();
         }
@@ -81,7 +81,7 @@ namespace Bagagesorteringssystem
 
                     planeTakenOff?.Invoke("Plane to " + plane.PlaneDestination + 
                                          " Deperated from Terminal " + TerminalID +
-                                         " with " + amountOfBagsInPlane + " bags", new EventArgs());
+                                         " with " + amountOfBagsInPlane + " bags \n", new EventArgs());
 
                     plane = new Plane();
                     FlyDestination = plane.PlaneDestination;

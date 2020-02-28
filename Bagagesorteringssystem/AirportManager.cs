@@ -17,7 +17,6 @@ namespace Bagagesorteringssystem
         }
 
 
-
         private AirportManager()
         {
 
@@ -54,13 +53,18 @@ namespace Bagagesorteringssystem
             // change destination by id
         }
 
+        /// <summary>
+        /// Adds terminal to the array avaible space
+        /// Returns 0 if the are no more slots avaible
+        /// </summary>
+        /// <param name="terminal"></param>
         public void AddTerminal(Terminal terminal)
         {
             uint pos = InsertInFreeSpace(terminal);
             terminal.TerminalID = pos;
         }
 
-
+        
         public Terminal GetTerminalFromId(uint id)
         {
             Terminal temp = null;
@@ -90,6 +94,11 @@ namespace Bagagesorteringssystem
             }
             return temp;
         }
+
+        /// <summary>
+        /// Returns array with terminals that are not null
+        /// </summary>
+        /// <returns></returns>
         public Terminal[] GetAvaibleTerminals()
         {
             List<Terminal> temp = new List<Terminal>();
@@ -103,23 +112,6 @@ namespace Bagagesorteringssystem
             return temp.ToArray();
         }
 
-
-        //public static void GenerateTerminals()
-        //{
-        //    int x = Enum.GetNames(typeof(Destination)).Length;
-        //    Array a = Enum.GetValues(typeof(Destination));
-        //    uint temp = 1;
-
-        //    for (int i = 0; i < x; i++)
-        //    {
-        //        places.Add((Destination)a.GetValue(i), temp);
-        //        if (temp == 3)
-        //            temp = 0;
-
-        //        temp++;
-        //    }
-        //}
-
         public uint InsertInFreeSpace(Terminal terminal)
         {
             for (uint i = 0; i < terminals.Length; i++)
@@ -127,7 +119,7 @@ namespace Bagagesorteringssystem
                 if (terminals[i] == null)
                 {
                     terminals[i] = terminal;
-                    return i;
+                    return i += 1;
                 }
             }
             return 0;
